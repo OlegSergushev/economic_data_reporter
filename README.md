@@ -1,5 +1,14 @@
 # Economic Data Reporter
 
+## Оглавлене
+
+- [Что это за проект?](#Что это за проект?)
+- [Для чего это нужно?](#Для чего это нужно?)
+- [Структура проекта](#Структура проекта)
+- [Как установить и запустить](#Как установить и запустить)
+- [Что умеет прямо сейчас?](#Что умеет прямо сейчас?)
+- [Как выглядит отчет?](#Как выглядит отчет?)
+
 ## Что это за проект?
 
 Economic Data Reporter — это консольный инструмент на Python для обработки и анализа макроэкономических данных из CSV файлов.
@@ -24,7 +33,7 @@ Economic Data Reporter — это консольный инструмент на
 
 5. Выводит аккуратную таблицу в консоль
 
-## Структура проекта
+## Структура проекта:
 ```bash
 economic_data_reporter/
 ├── economic_reporter/         # Основной пакет
@@ -40,3 +49,47 @@ economic_data_reporter/
 └── README.md                  # Вы здесь
 ```
 
+## Как установить и запустить:
+
+1. Клонируйте репозиторий
+```
+git clone https://github.com/OlegSergushev/economic_data_reporter
+cd economic_data_reporter
+```
+2. Запустите на тестовых данных
+```
+python -m economic_reporter.main --files data/economic1.csv data/economic2.csv --report average-gdp
+```
+3. Пробуем другие отчеты
+```
+python -m economic_reporter.main --files data/economic1.csv data/economic2.csv --report average-unemployment
+python -m economic_reporter.main --files data/economic1.csv data/economic2.csv --report population-by-continent
+```
+
+## Что умеет прямо сейчас?
+
+### Доступные отчеты:
+- average-gdp	Средний ВВП по странам
+- average-unemployment	Средняя безработица по странам
+- population-by-continent	Суммарное население по континентам
+
+## Как выглядит отчет?
+```bash
+Отчет: average-gdp
++----+-----------------+------------+
+| №  | country         |        gdp |
++----+-----------------+------------+
+|  1 | United States   |   23923.67 |
+|  2 | China           |   17810.33 |
+|  3 | Japan           |    4467.00 |
+|  4 | Germany         |    4138.33 |
+|  5 | India           |    3423.67 |
+|  6 | United Kingdom  |    3113.33 |
+|  ... | ...           |        ... |
++----+-----------------+------------+
+
+Итоги:
+• Количество записей: 20
+• Максимальное значение: United States (23923.67)
+• Минимальное значение: Switzerland (845.00)
+```
